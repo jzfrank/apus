@@ -24,7 +24,7 @@ import java.util.List;
 
 public record Session(@NotNull String id, @NotNull LocalDateTime startDate, @NotNull LocalDateTime endDate,
                       @NotNull Room room, @NotNull String title, @NotNull List<Speaker> speakers,
-                      @NotNull Language language)
+                      @NotNull Language language, @NotNull TrackInfo trackInfo)
         implements Comparable<Session> {
     @Override
     public int compareTo(@NotNull final Session other) {
@@ -34,4 +34,12 @@ public record Session(@NotNull String id, @NotNull LocalDateTime startDate, @Not
         }
         return dateCompareResult;
     }
+
+    public Session(String id,  LocalDateTime startDate,  LocalDateTime endDate,
+             Room room,  String title,  List<Speaker> speakers,
+             Language language) {
+        this(id, startDate, endDate, room, title, speakers, language, TrackInfo.NONE);
+    }
+
+
 }
